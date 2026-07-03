@@ -1,0 +1,12 @@
+{
+  "name": "FBShop",
+  "version": "1.0.0",
+  "main": "server.js",
+  "packageManager": "yarn@4.14.1",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
