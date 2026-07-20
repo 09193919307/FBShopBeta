@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel administrativo | FBShop</title>
+  <link rel="icon" type="image/png" href="/logo-fbshop.png">
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+  <div class="dashboard-layout">
+    <aside class="sidebar" id="sidebar">
+      <a href="/"><img src="/logo-fbshop.png" alt="FBShop" class="sidebar-logo"></a>
+
+      <div class="admin-profile">
+        <div class="avatar" id="avatarAdmin">A</div>
+        <div>
+          <strong id="nombreAdmin">Administrador</strong>
+          <span id="correoAdmin">admin@fbshop.com</span>
+        </div>
+      </div>
+
+      <div class="menu-label">Administración</div>
+      <ul class="sidebar-menu">
+        <li><button class="active" data-view="inicio">⌂ Inicio</button></li>
+        <li><button data-view="productos">▣ Productos</button></li>
+        <li><button data-view="categorias">◈ Categorías</button></li>
+        <li><button data-view="pedidos">▤ Pedidos</button></li>
+        <li><button data-view="usuarios">♙ Usuarios</button></li>
+        <li><button data-view="reportes">▥ Reportes</button></li>
+      </ul>
+
+      <div class="menu-label">Sistema</div>
+      <ul class="sidebar-menu">
+        <li><button data-view="configuracion">⚙ Configuración</button></li>
+        <li><a href="/">↗ Ver tienda</a></li>
+      </ul>
+    </aside>
+
+    <main class="dashboard-main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle" id="menuToggle">☰</button>
+          <div>
+            <h1 id="tituloVista">Panel administrativo</h1>
+            <p>Control general de FBShop</p>
+          </div>
+        </div>
+
+        <div class="topbar-actions">
+          <a href="/" class="store-link">🛍 <span>Ir a la tienda</span></a>
+          <button class="logout-btn" id="cerrarSesion">Cerrar sesión</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <section class="module-view active" id="view-inicio">
+          <div class="welcome">
+            <span>Resumen general</span>
+            <h2>Bienvenido al panel de FBShop</h2>
+            <p>Desde este espacio podrás supervisar productos, categorías, pedidos, usuarios y las funciones principales de la tienda.</p>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card">
+              <div class="stat-top"><div class="stat-icon">📦</div><span class="stat-change">Catálogo activo</span></div>
+              <small>Productos</small><strong>6</strong>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top"><div class="stat-icon">🏷</div><span class="stat-change">Organizadas</span></div>
+              <small>Categorías</small><strong>3</strong>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top"><div class="stat-icon">🛒</div><span class="stat-change">Sin pendientes</span></div>
+              <small>Pedidos pendientes</small><strong>0</strong>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top"><div class="stat-icon">👥</div><span class="stat-change">Cuenta activa</span></div>
+              <small>Usuarios registrados</small><strong id="totalUsuarios">1</strong>
+            </article>
+          </div>
+
+          <div class="dashboard-grid">
+            <section class="panel">
+              <div class="panel-header"><h3>Actividad reciente</h3><small>Hoy</small></div>
+              <div class="panel-body">
+                <div class="activity-list">
+                  <article class="activity">
+                    <div class="activity-icon">✓</div>
+                    <div><strong>Catálogo disponible</strong><p>Los seis productos están visibles en la tienda.</p></div>
+                    <time>Ahora</time>
+                  </article>
+                  <article class="activity">
+                    <div class="activity-icon">👤</div>
+                    <div><strong>Sesión administrativa iniciada</strong><p>Acceso correcto al panel de control.</p></div>
+                    <time>Ahora</time>
+                  </article>
+                  <article class="activity">
+                    <div class="activity-icon">⚙</div>
+                    <div><strong>Módulos preparados</strong><p>Las opciones del menú están listas para desarrollo posterior.</p></div>
+                    <time>Hoy</time>
+                  </article>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header"><h3>Acciones rápidas</h3></div>
+              <div class="panel-body">
+                <div class="quick-actions">
+                  <button class="quick-action" data-open="productos"><span>＋</span><strong>Agregar producto</strong><small>Preparar catálogo</small></button>
+                  <button class="quick-action" data-open="pedidos"><span>🛒</span><strong>Ver pedidos</strong><small>Consultar solicitudes</small></button>
+                  <button class="quick-action" data-open="usuarios"><span>👥</span><strong>Ver usuarios</strong><small>Administrar cuentas</small></button>
+                  <button class="quick-action" data-open="reportes"><span>📊</span><strong>Ver reportes</strong><small>Consultar resultados</small></button>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="module-view" id="view-productos"><div class="module-card"><h2>Administración de productos</h2><p>Aquí se integrará el alta, consulta, edición y eliminación de productos.</p><div class="module-placeholder"><div><strong>📦 Módulo de productos</strong><br>Preparado para conectarse con la base de datos.</div></div></div></section>
+        <section class="module-view" id="view-categorias"><div class="module-card"><h2>Administración de categorías</h2><p>Gestiona la clasificación de ropa, calzado y accesorios.</p><div class="module-placeholder"><div><strong>🏷 Módulo de categorías</strong><br>Preparado para desarrollo posterior.</div></div></div></section>
+        <section class="module-view" id="view-pedidos"><div class="module-card"><h2>Administración de pedidos</h2><p>Consulta y actualiza el estado de las compras realizadas.</p><div class="module-placeholder"><div><strong>🛒 Módulo de pedidos</strong><br>No existen pedidos pendientes en esta demostración.</div></div></div></section>
+        <section class="module-view" id="view-usuarios"><div class="module-card"><h2>Administración de usuarios</h2><p>Consulta las cuentas registradas temporalmente en el navegador.</p><div class="module-placeholder" id="listaUsuarios"></div></div></section>
+        <section class="module-view" id="view-reportes"><div class="module-card"><h2>Reportes</h2><p>Este espacio permitirá mostrar ventas, productos y actividad general.</p><div class="module-placeholder"><div><strong>📊 Módulo de reportes</strong><br>Listo para incorporar gráficas y estadísticas.</div></div></div></section>
+        <section class="module-view" id="view-configuracion"><div class="module-card"><h2>Configuración</h2><p>Personaliza posteriormente los datos generales de FBShop.</p><div class="module-placeholder"><div><strong>⚙ Configuración general</strong><br>Preparada para conectarse con el backend.</div></div></div></section>
+      </div>
+    </main>
+  </div>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

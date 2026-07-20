@@ -285,6 +285,30 @@ app.get("/", (req, res) => {
           gap: 10px;
         }
 
+        .boton-login-nav {
+          display: inline-flex;
+          min-height: 44px;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          padding: 0 16px;
+          border: 1px solid rgba(255, 255, 255, 0.32);
+          border-radius: 12px;
+          background: rgba(255, 255, 255, 0.08);
+          color: white;
+          text-decoration: none;
+          font-size: 13px;
+          font-weight: 900;
+          transition: 0.25s ease;
+        }
+
+        .boton-login-nav:hover {
+          border-color: var(--amarillo);
+          background: rgba(255, 176, 0, 0.12);
+          color: var(--amarillo-claro);
+          transform: translateY(-2px);
+        }
+
         .boton-carrito {
           display: flex;
           align-items: center;
@@ -1500,12 +1524,17 @@ app.get("/", (req, res) => {
         </ul>
 
         <div class="acciones-nav">
+          <a href="/login" class="boton-login-nav" id="botonSesion">
+            <span aria-hidden="true"></span>
+            <span id="textoSesion">Iniciar sesión</span>
+          </a>
+
           <button
             type="button"
             class="boton-carrito"
             onclick="abrirCarrito()"
           >
-            <span aria-hidden="true">🛒</span>
+            <span aria-hidden="true"></span>
             <span class="texto-carrito">Mi carrito</span>
             <span class="contador-carrito" id="contadorCarrito">0</span>
           </button>
@@ -2120,11 +2149,92 @@ app.get("/", (req, res) => {
           }
         });
 
+        function actualizarEstadoSesion() {
+          const botonSesion = document.getElementById("botonSesion");
+          const textoSesion = document.getElementById("textoSesion");
+
+        if (!botonSesion || !textoSesion) {
+          return;
+        }
+
+        const sesionGuardada = localStorage.getItem("fbshopSesion");
+
+        if (!sesionGuardada) {
+          botonSesion.href = "/login";
+          textoSesion.textContent = "Iniciar sesión";
+          return;
+        }
+
+        try {
+         const sesion = JSON.parse(sesionGuardada);
+
+         textoSesion.textContent = sesion.nombre || "Mi cuenta";
+
+        if (sesion.rol === "administrador") {
+          botonSesion.href = "/dashboard";
+        } else {
+          botonSesion.href = "#";
+
+          botonSesion.addEventListener("click", function (event) {
+         event.preventDefault();
+          mostrarMenuCuenta();
+      });
+    }
+  } catch (error) {
+    localStorage.removeItem("fbshopSesion");
+    botonSesion.href = "/login";
+    textoSesion.textContent = "Iniciar sesión";
+  }
+}
+
+function mostrarMenuCuenta() {
+  const sesion = JSON.parse(
+    localStorage.getItem("fbshopSesion") || "null"
+  );
+
+  if (!sesion) {
+    window.location.href = "/login";
+    return;
+  }
+
+  const cerrarSesion = confirm(
+  "Cuenta iniciada\\n\\n" +
+  "Nombre: " + sesion.nombre + "\\n" +
+  "Correo: " + sesion.correo + "\\n\\n" +
+  "¿Deseas cerrar sesión?"
+);
+
+  if (cerrarSesion) {
+    localStorage.removeItem("fbshopSesion");
+
+    mostrarToast("Sesión cerrada correctamente.");
+
+    setTimeout(function () {
+      window.location.reload();
+    }, 700);
+  }
+}
+
+actualizarEstadoSesion();
+
         actualizarCarrito();
       </script>
     </body>
     </html>
   `);
+});
+
+
+app.get("/login", (req, res) => {
+  res.sendFile(require("path").join(__dirname, "public", "login.html"));
+});
+
+app.get("/registro", (req, res) => {
+  res.sendFile(require("path").join(__dirname, "public", "registro.html"));
+});
+
+app.get("/dashboard", (req, res) => {
+  res.sendFile(require("path").join(__dirname, "public", "dashboard.html"));
 });
 
 app.get("/api", (req, res) => {

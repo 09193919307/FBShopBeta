@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear cuenta | FBShop</title>
+  <link rel="icon" type="image/png" href="/logo-fbshop.png">
+  <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+  <main class="auth-layout">
+    <section class="auth-brand">
+      <a href="/"><img src="/logo-fbshop.png" alt="FBShop" class="brand-logo"></a>
+
+      <div class="brand-copy">
+        <div class="brand-tag">Únete a nuestra comunidad</div>
+        <h1>Crea tu cuenta en <span>FBShop</span></h1>
+        <p>Regístrate para guardar tus datos, acceder más rápido y disfrutar de una experiencia personalizada dentro de la tienda.</p>
+      </div>
+
+      <div class="brand-points">
+        <span><strong>✓</strong> Registro sencillo</span>
+        <span><strong>✓</strong> Validación de datos</span>
+        <span><strong>✓</strong> Acceso inmediato</span>
+      </div>
+    </section>
+
+    <section class="auth-panel">
+      <div class="auth-card">
+        <div class="auth-top">
+          <a href="/" class="back-link">← Volver a la tienda</a>
+        </div>
+
+        <div class="auth-title">
+          <h2>Crear cuenta</h2>
+          <p>Completa tus datos para registrarte.</p>
+        </div>
+
+        <form id="registroForm" novalidate>
+          <div class="form-group">
+            <label for="nombre">Nombre completo</label>
+            <div class="input-wrap">
+              <input id="nombre" name="nombre" type="text" placeholder="Tu nombre completo" autocomplete="name" required>
+              <span class="input-icon">👤</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="correo">Correo electrónico</label>
+            <div class="input-wrap">
+              <input id="correo" name="correo" type="email" placeholder="nombre@correo.com" autocomplete="email" required>
+              <span class="input-icon">✉</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contrasena">Contraseña</label>
+            <div class="input-wrap">
+              <input id="contrasena" name="contrasena" type="password" placeholder="Mínimo 8 caracteres" autocomplete="new-password" required>
+              <button class="password-toggle" type="button" data-target="contrasena" aria-label="Mostrar contraseña">👁</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmar">Confirmar contraseña</label>
+            <div class="input-wrap">
+              <input id="confirmar" name="confirmar" type="password" placeholder="Repite tu contraseña" autocomplete="new-password" required>
+              <button class="password-toggle" type="button" data-target="confirmar" aria-label="Mostrar contraseña">👁</button>
+            </div>
+          </div>
+
+          <div class="form-options">
+            <label class="check"><input type="checkbox" id="terminos"> Acepto los términos y condiciones</label>
+          </div>
+
+          <div class="message" id="mensajeRegistro"></div>
+
+          <button type="submit" class="auth-button">Crear cuenta</button>
+        </form>
+
+        <div class="auth-footer">
+          ¿Ya tienes una cuenta? <a href="/login">Iniciar sesión</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="/js/registro.js"></script>
+</body>
+</html>
